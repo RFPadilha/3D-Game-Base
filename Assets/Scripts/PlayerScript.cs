@@ -1,34 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDataPersistence
 {
     /*
      * Any additional player stats should also be added to "PlayerData" and "PersistentPlayerStats" scripts for adequate save manipulation
      * */
-    PersistentPlayerStats persistentStats;
-    public int maxHealth;
-    public int currentHealth;
-
-    public int exp;
-    public int expToLevelUp;
-    public int level;
+    public PlayerData data;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        persistentStats = FindObjectOfType<PersistentPlayerStats>();
+        /*
+        data = PersistentPlayerStats.instance.data;
         
 
-        maxHealth = persistentStats.maxHealth;
-        currentHealth = persistentStats.currentHealth;
+        maxHealth = data.maxHealth;
+        currentHealth = data.currentHealth;
 
-        exp = persistentStats.exp;
-        expToLevelUp = persistentStats.expToLevelUp;
-        level = persistentStats.level;
-        transform.position = new Vector3(persistentStats.position[0], persistentStats.position[1], persistentStats.position[2]);
+        exp = data.exp;
+        expToLevelUp = data.expToLevelUp;
+        level = data.level;
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+        */
 }
 
     // Update is called once per frame
@@ -38,15 +34,25 @@ public class PlayerScript : MonoBehaviour
     }
     public void LevelUp()
     {
-        level++;
-        exp = 0;
+        data.level++;
+        data.exp = 0;
     }
     public void GainExp(int expGain)
     {
-        exp += expGain;
+        data.exp += expGain;
     }
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        data.currentHealth -= damage;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.data = data.playerData;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerData = this.data;
     }
 }
