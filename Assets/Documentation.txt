@@ -1,0 +1,39 @@
+** Adding Scenes **
+
+- Transitioning between scenes must always be done via the "Loader" static class, which will go through loading scene automatically
+- New scene names must be added to the "Loader"'s pulic enum Scene in order to be accessible
+
+
+
+
+** Saving data **
+
+- Data persistence Manager singleton persists across all scenes, so "SaveGame" and "LoadGame" can be called from any script at any time
+- All data that must be saved has to be added as a public member to "GameData.cs"
+- Autosaves on scene change and on application quit
+- "PlayerData" is the class holding all player data, in order to add new members, the constructor must also be updated in the base class, and the "SaveSystem.cs" "SavePlayer" method
+- The "Collectible.cs" script must be added to all "permanently collected" game objects, so they will not respawn upon reloading
+	- This class can be used as base for non-respawning enemies, NPCs and other objects
+	- Refer to the commented section if UI elements will be added to a collectible object
+- If scriptable objects must be saved, consider using a monobehaviour instead, if scriptable objects are still the preferred choice, create a class to mirror the data to be saved as a
+	medium. Just remember to add a constructor method and actually construct the object on "GameData.cs" class's constructor, since saving directly to the scriptable object
+	will only work in the editor, not in a build
+
+
+
+
+** Tabs Menu **
+
+- New menu tabs should be created from the prefab "TabMenuButton"
+- The relevant menu page for the new button can be created normally, it just needs to be parented to the "PageArea" gameObject in the appropriate order
+
+
+
+
+** Animations **
+
+- A self documenting code using 2D blend trees was created and can be tested in the animTesting scene
+- Use that code as base for movement, since it covers basics such as acceleration, deceleration, walking / running and max speed
+
+
+

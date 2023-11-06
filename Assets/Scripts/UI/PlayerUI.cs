@@ -56,7 +56,7 @@ public class PlayerUI : MonoBehaviour
         player.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
         */
     }
-    
+    /*
     public void OptionsMenu()
     {
         optionsMenuHolder.SetActive(true);
@@ -66,6 +66,11 @@ public class PlayerUI : MonoBehaviour
     {
         optionsMenuHolder.SetActive(false);
         pauseMenuHolder.SetActive(true);
+    }
+    */
+    public void QuitToMenu()
+    {
+        Loader.Load(Loader.Scene.MainMenu);
     }
     public void QuitGame()
     {

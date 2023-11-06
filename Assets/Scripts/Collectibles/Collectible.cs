@@ -23,7 +23,7 @@ public class Collectible : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         if (data.collectedObjects.ContainsKey(id))
         {

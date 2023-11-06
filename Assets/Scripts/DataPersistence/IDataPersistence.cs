@@ -6,5 +6,5 @@ public interface IDataPersistence
 {
     void LoadData(GameData data);
 
-    void SaveData(ref GameData data);//"ref" indicates referencing the actual data, so the script calling this function can modify it
+    void SaveData(GameData data);//"ref" indicates referencing the actual data, so the script calling this function can modify it
 }
