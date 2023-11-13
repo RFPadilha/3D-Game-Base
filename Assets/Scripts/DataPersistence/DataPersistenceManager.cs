@@ -20,7 +20,9 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;//references all objects that implement IDataPersistence interface
     private FileDataHandler dataHandler;
+
     [Header("Autosave Configuration")]
+    [SerializeField] private bool autosaveEnabled = true;
     [SerializeField] private float autosaveTimeSeconds = 300f;//5min
     private Coroutine autosaveCoroutine;
 
@@ -152,7 +154,7 @@ public class DataPersistenceManager : MonoBehaviour
     }
     private IEnumerator AutoSave()
     {
-        while (true)
+        while (autosaveEnabled)
         {
             yield return new WaitForSeconds(autosaveTimeSeconds);
             SaveGame();

@@ -10,7 +10,6 @@ public class TabGroup : MonoBehaviour
     public Sprite tabActive;
     public TabButton selectedTab;
     public List<GameObject> pagesToSwap;
-
     public void Subscribe(TabButton button)
     {
         if (tabButtons == null)
@@ -18,6 +17,11 @@ public class TabGroup : MonoBehaviour
             tabButtons = new List<TabButton>();
         }
         tabButtons.Add(button);
+        if(tabButtons.Count == pagesToSwap.Count) 
+        {
+            selectedTab = tabButtons[0];
+            OnTabClick(selectedTab);
+        }
     }
     
     public void OnTabEnter(TabButton button)

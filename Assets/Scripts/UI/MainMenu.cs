@@ -13,13 +13,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button firstSelectedSaveSlots;
     [SerializeField] private GameObject optionsMenuHolder;
     [SerializeField] private Button firstSelectedOptions;
+
     [Header("MenuButtons")]
     [SerializeField] private Button continueButton;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button loadGameButton;
     [SerializeField] private Button optionsButton;
     [SerializeField] private Button quitButton;
-
     private void OnEnable()
     {
         if (firstSelectedMain.interactable == false)

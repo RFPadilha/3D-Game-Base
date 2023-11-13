@@ -8,7 +8,7 @@ public class PlayerUI : MonoBehaviour
     public GameObject pauseMenuHolder;
     public GameObject optionsMenuHolder;
 
-    public PlayerScript player;
+    public PlayerMovementScript player;
     //PersistentPlayerStats stats;
 
     bool isPaused = false;
